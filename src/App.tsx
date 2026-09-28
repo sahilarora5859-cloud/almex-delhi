@@ -10,6 +10,7 @@ import {
 } from './data/furnitureData';
 import { idbGet } from './utils/storageUtils';
 import { OpeningIntro } from './components/OpeningIntro';
+import { SHOWROOM_ASSETS } from './assets/showroomImages';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
@@ -137,7 +138,7 @@ export default function App() {
           <>
             {/* 3. Hero Section */}
             <HeroSection
-              heroImageUrl={config.heroBackgroundUrl || '/src/assets/images/almex_hero_suite_1790330628827.jpg'}
+              heroImageUrl={config.heroBackgroundUrl || SHOWROOM_ASSETS.heroSuite}
               onExploreClick={() => {
                 document.getElementById('collection-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
@@ -146,7 +147,7 @@ export default function App() {
 
             {/* 4. About Section */}
             <AboutSection
-              showroomImageUrl={config.showroomBackgroundUrl || '/src/assets/images/almex_exact_facade_kirti_nagar_1790331316270.jpg'}
+              showroomImageUrl={config.showroomBackgroundUrl || SHOWROOM_ASSETS.facade}
               onUpdateShowroomImage={(newUrl) => {
                 handleSaveConfig({
                   ...config,
@@ -159,15 +160,15 @@ export default function App() {
             {/* 5. Main Collection Section (Editorial Panels: 01 Chairs, 02 Desks) */}
             <CollectionSection
               onSelectCategory={handleSelectCategory}
-              chairsCoverUrl={config.chairsCoverUrl || '/src/assets/images/almex_cognac_executive_chair_1790331615043.jpg'}
-              desksCoverUrl={config.desksCoverUrl || '/src/assets/images/almex_desks_collection_1790330673247.jpg'}
+              chairsCoverUrl={config.chairsCoverUrl || SHOWROOM_ASSETS.cognacChair}
+              desksCoverUrl={config.desksCoverUrl || SHOWROOM_ASSETS.desksCollection}
               chairsCount={chairsItems.length}
               desksCount={desksItems.length}
             />
 
             {/* 6. Showroom Section (Kirti Nagar, New Delhi) */}
             <ShowroomSection
-              showroomImageUrl={config.showroomBackgroundUrl || '/src/assets/images/almex_showroom_interior_1790330647428.jpg'}
+              showroomImageUrl={config.showroomBackgroundUrl || SHOWROOM_ASSETS.showroomInterior}
               onOpenInquiry={() => {
                 setInquiryProduct('Showroom Private Appointment');
                 setIsInquiryOpen(true);
@@ -176,7 +177,7 @@ export default function App() {
 
             {/* 7. Final Cinematic Section */}
             <ClosingSection
-              backgroundImageUrl={config.heroBackgroundUrl || '/src/assets/images/almex_hero_suite_1790330628827.jpg'}
+              backgroundImageUrl={config.heroBackgroundUrl || SHOWROOM_ASSETS.heroSuite}
               onSelectCategory={handleSelectCategory}
             />
           </>
@@ -191,8 +192,8 @@ export default function App() {
             onBackToHome={handleGoHome}
             coverImageUrl={
               activeView === 'office-chairs'
-                ? config.chairsCoverUrl || '/src/assets/images/almex_cognac_executive_chair_1790331615043.jpg'
-                : config.desksCoverUrl || '/src/assets/images/almex_desks_collection_1790330673247.jpg'
+                ? config.chairsCoverUrl || SHOWROOM_ASSETS.cognacChair
+                : config.desksCoverUrl || SHOWROOM_ASSETS.desksCollection
             }
           />
         )}

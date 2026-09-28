@@ -1,12 +1,13 @@
 import { FurnitureItem, ShowroomConfig } from '../types/furniture';
+import { SHOWROOM_ASSETS } from '../assets/showroomImages';
 
 // Default showroom imagery generated for Almex Furniture
 export const DEFAULT_CONFIG: ShowroomConfig = {
-  introBackgroundUrl: '/src/assets/images/almex_exact_facade_kirti_nagar_1790331316270.jpg',
-  heroBackgroundUrl: '/src/assets/images/almex_hero_suite_1790330628827.jpg',
-  showroomBackgroundUrl: '/src/assets/images/almex_exact_facade_kirti_nagar_1790331316270.jpg',
-  chairsCoverUrl: '/src/assets/images/almex_cognac_executive_chair_1790331615043.jpg',
-  desksCoverUrl: '/src/assets/images/almex_desks_collection_1790330673247.jpg',
+  introBackgroundUrl: SHOWROOM_ASSETS.facade,
+  heroBackgroundUrl: SHOWROOM_ASSETS.heroSuite,
+  showroomBackgroundUrl: SHOWROOM_ASSETS.facade,
+  chairsCoverUrl: SHOWROOM_ASSETS.cognacChair,
+  desksCoverUrl: SHOWROOM_ASSETS.desksCollection,
 };
 
 // 22 Curated ready-made office furniture pieces (11 Office Chairs + 11 Office Desks)
@@ -20,7 +21,7 @@ export const INITIAL_FURNITURE_ITEMS: FurnitureItem[] = [
     category: 'office-chairs',
     categoryLabel: 'Executive Office Seating',
     shortDescription: 'A premium high-back chair featuring soft cushioned seating, warm cognac upholstery and elegant chrome detailing. Designed for a sophisticated and comfortable executive workspace.',
-    imageUrl: '/src/assets/images/almex_cognac_executive_chair_1790331615043.jpg',
+    imageUrl: SHOWROOM_ASSETS.cognacChair,
     dimensions: 'W: 68 cm · D: 72 cm · H: 118–128 cm',
     finish: 'Cognac Upholstery · Chrome Accents · Contrast Stitching',
     layout: 'featured-full',
@@ -100,7 +101,7 @@ export const INITIAL_FURNITURE_ITEMS: FurnitureItem[] = [
     category: 'office-desks',
     categoryLabel: 'Office Desk',
     shortDescription: 'Monumental architectural proportions with integrated modesty panel and concealed cable raceways.',
-    imageUrl: '/src/assets/images/almex_desks_collection_1790330673247.jpg',
+    imageUrl: SHOWROOM_ASSETS.desksCollection,
     dimensions: 'W: 240 cm · D: 105 cm · H: 76 cm',
     finish: 'Deep Smoked Oak Veneer with Brushed Bronze Inlay',
     layout: 'featured-full',
@@ -167,7 +168,7 @@ export const INITIAL_FURNITURE_ITEMS: FurnitureItem[] = [
     category: 'office-desks',
     categoryLabel: 'Office Desk',
     shortDescription: 'Curated for primary executive retreats and signature corporate presentations.',
-    imageUrl: '/src/assets/images/almex_hero_suite_1790330628827.jpg',
+    imageUrl: SHOWROOM_ASSETS.heroSuite,
     dimensions: 'W: 260 cm · D: 110 cm · H: 76 cm',
     finish: 'Dark Walnut Burl with Solid Milled Brass Plinth',
     layout: 'featured-full',
@@ -212,8 +213,8 @@ export function loadSavedFurnitureItems(): FurnitureItem[] {
                   'A premium high-back chair featuring soft cushioned seating, warm cognac upholstery and elegant chrome detailing. Designed for a sophisticated and comfortable executive workspace.',
                 finish: 'Cognac Upholstery · Chrome Accents · Contrast Stitching',
                 dimensions: 'W: 68 cm · D: 72 cm · H: 118–128 cm',
-                imageUrl: item.imageUrl.includes('almex_chairs_collection')
-                  ? '/src/assets/images/almex_cognac_executive_chair_1790331615043.jpg'
+                imageUrl: item.imageUrl.includes('almex_') || item.imageUrl.includes('/src/assets')
+                  ? SHOWROOM_ASSETS.cognacChair
                   : item.imageUrl,
               };
             }
