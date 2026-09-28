@@ -22,6 +22,7 @@ import { Footer } from './components/Footer';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { InquiryModal } from './components/InquiryModal';
 import { ImageManagerModal } from './components/ImageManagerModal';
+import { Save, Check, RefreshCw, Sparkles, ExternalLink } from 'lucide-react';
 
 export default function App() {
   const [showIntro, setShowIntro] = useState<boolean>(false);
@@ -32,6 +33,32 @@ export default function App() {
   const [isInquiryOpen, setIsInquiryOpen] = useState<boolean>(false);
   const [inquiryProduct, setInquiryProduct] = useState<string>('');
   const [isAssetManagerOpen, setIsAssetManagerOpen] = useState<boolean>(false);
+
+  // Sync state for committing custom user designs to the permanent codebase
+  const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'saved' | 'error'>('idle');
+  const [syncMessage, setSyncMessage] = useState<string>('');
+
+  const handleSyncToPermanentCode = async (itemsToSync = items, configToSync = config) => {
+    setSyncStatus('syncing');
+    setSyncMessage('Saving all your chair images & customized showroom design into the GitHub codebase...');
+    try {
+      const res = await fetch('/api/save-showroom-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: itemsToSync, config: configToSync }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSyncStatus('saved');
+        setSyncMessage(`All ${data.count} items, custom chair photos and designs are now baked into the code!`);
+        setTimeout(() => setSyncStatus('idle'), 8000);
+      } else {
+        setSyncStatus('idle');
+      }
+    } catch (e) {
+      setSyncStatus('idle');
+    }
+  };
 
   // Hydrate custom items and config from IndexedDB (preserves high-res assets without quota limits)
   useEffect(() => {
@@ -57,6 +84,8 @@ export default function App() {
           if (filtered.length !== idbItems.length) {
             handleSaveItems(filtered);
           }
+          // Automatically sync hydrated items to codebase in background
+          handleSyncToPermanentCode(filtered, config);
         }
         const idbConfig = await idbGet<ShowroomConfig>(STORAGE_KEY_CONFIG);
         if (isMounted && idbConfig) {
@@ -76,6 +105,7 @@ export default function App() {
   const handleSaveItems = (newItems: FurnitureItem[]) => {
     setItems(newItems);
     saveFurnitureItems(newItems);
+    handleSyncToPermanentCode(newItems, config);
   };
 
   const handleDeleteItem = (itemId: string) => {
@@ -90,6 +120,7 @@ export default function App() {
   const handleSaveConfig = (newConfig: ShowroomConfig) => {
     setConfig(newConfig);
     saveShowroomConfig(newConfig);
+    handleSyncToPermanentCode(items, newConfig);
   };
 
   const handleSelectCategory = (cat: PrimaryCategory) => {
@@ -208,6 +239,32 @@ export default function App() {
           setIsInquiryOpen(true);
         }}
       />
+
+      {/* Permanent GitHub Sync Floating Action Bar */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 pointer-events-auto">
+        {syncStatus === 'syncing' && (
+          <div className="bg-[#1a1715]/95 backdrop-blur-md border border-[#c89d5c]/60 text-xs px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2.5 text-[#eae7e1] animate-pulse">
+            <RefreshCw className="w-3.5 h-3.5 text-[#c89d5c] animate-spin" />
+            <span>Saving your chair photos & updating GitHub codebase...</span>
+          </div>
+        )}
+        {syncStatus === 'saved' && (
+          <div className="bg-[#142318]/95 backdrop-blur-md border border-emerald-500/50 text-xs px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2.5 text-emerald-300">
+            <Check className="w-3.5 h-3.5 text-emerald-400" />
+            <span>{syncMessage}</span>
+          </div>
+        )}
+        <button
+          onClick={() => handleSyncToPermanentCode()}
+          disabled={syncStatus === 'syncing'}
+          title="Save all currently visible chairs and designs into GitHub permanent build"
+          className="group relative flex items-center gap-2.5 bg-[#171513]/95 hover:bg-[#23201d] text-[#eae7e1] text-xs font-medium tracking-wide uppercase px-4 py-2.5 rounded-full border border-[#c89d5c]/60 hover:border-[#c89d5c] shadow-[0_4px_24px_rgba(0,0,0,0.6)] transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <Sparkles className="w-3.5 h-3.5 text-[#c89d5c]" />
+          <span>Save Preview As Final for GitHub</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+        </button>
+      </div>
 
       {/* 9. Full-screen Product Detail Lightbox */}
       <ProductDetailModal
