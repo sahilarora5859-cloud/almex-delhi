@@ -203,6 +203,12 @@ export function loadSavedFurnitureItems(): FurnitureItem[] {
               ].includes(item.id)
           )
           .map((item) => {
+            const canonical = INITIAL_FURNITURE_ITEMS.find((init) => init.id === item.id);
+            let resolvedImage = item.imageUrl;
+            if (!resolvedImage || resolvedImage.startsWith('/src/') || resolvedImage.includes('179033')) {
+              resolvedImage = canonical ? canonical.imageUrl : SHOWROOM_ASSETS.cognacChair;
+            }
+
             if (item.id === 'chair-01') {
               return {
                 ...item,
@@ -213,9 +219,7 @@ export function loadSavedFurnitureItems(): FurnitureItem[] {
                   'A premium high-back chair featuring soft cushioned seating, warm cognac upholstery and elegant chrome detailing. Designed for a sophisticated and comfortable executive workspace.',
                 finish: 'Cognac Upholstery · Chrome Accents · Contrast Stitching',
                 dimensions: 'W: 68 cm · D: 72 cm · H: 118–128 cm',
-                imageUrl: item.imageUrl.includes('almex_') || item.imageUrl.includes('/src/assets')
-                  ? SHOWROOM_ASSETS.cognacChair
-                  : item.imageUrl,
+                imageUrl: SHOWROOM_ASSETS.cognacChair,
               };
             }
             if (item.id === 'chair-03') {
@@ -228,9 +232,13 @@ export function loadSavedFurnitureItems(): FurnitureItem[] {
                   'A sophisticated cushioned chair featuring a warm tan finish, button-tufted detailing and polished chrome accents. Its refined design makes it ideal for modern conference rooms and executive workspaces.',
                 finish: 'Warm Tan Upholstery · Button-Tufted Detailing · Polished Chrome',
                 dimensions: undefined,
+                imageUrl: canonical ? canonical.imageUrl : item.imageUrl,
               };
             }
-            return item;
+            return {
+              ...item,
+              imageUrl: resolvedImage,
+            };
           });
       }
     }
@@ -276,7 +284,14 @@ export function loadSavedConfig(): ShowroomConfig {
   try {
     const raw = localStorage.getItem(STORAGE_KEY_CONFIG);
     if (raw) {
-      return { ...DEFAULT_CONFIG, ...JSON.parse(raw) };
+      const parsed = JSON.parse(raw);
+      const cleaned = { ...DEFAULT_CONFIG };
+      for (const k of Object.keys(DEFAULT_CONFIG) as (keyof ShowroomConfig)[]) {
+        if (parsed[k] && typeof parsed[k] === 'string' && !parsed[k].startsWith('/src/') && !parsed[k].includes('179033')) {
+          cleaned[k] = parsed[k];
+        }
+      }
+      return cleaned;
     }
   } catch (e) {
     console.warn('Failed to parse saved config from localStorage:', e);
