@@ -68,6 +68,16 @@
         </style>
       </div>
     </div>
+    <script id="root-redirect">
+      // If uncompiled root index.html is loaded on GitHub Pages, forward to /docs/ where the built site is
+      if (window.location.hostname.endsWith('github.io')) {
+        var p = window.location.pathname;
+        if (!p.includes('/docs')) {
+          var target = p.replace(/\/?$/, '/docs/');
+          window.location.replace(window.location.origin + target + window.location.search + window.location.hash);
+        }
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
