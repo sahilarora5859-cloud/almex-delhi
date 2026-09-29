@@ -25,13 +25,30 @@
       }
     </style>
     <script>
-      // Fix GitHub Pages relative paths: ensure URL ends with '/' on repo base paths
+      // Fix GitHub Pages relative paths & handle uncompiled root fallback
       (function() {
         var path = window.location.pathname;
         if (!path.endsWith('/') && !path.split('/').pop().includes('.')) {
           window.location.replace(window.location.origin + path + '/' + window.location.search + window.location.hash);
+          return;
+        }
+        // If uncompiled root index.html is served on GitHub Pages, forward to /docs/
+        var devScript = document.querySelector('script[src*="/src/main.tsx"]');
+        if (devScript && window.location.hostname.endsWith('github.io')) {
+          var target = path.replace(/\/?$/, '/docs/');
+          window.location.replace(window.location.origin + target + window.location.search + window.location.hash);
         }
       })();
+      window.addEventListener('error', function(e) {
+        var loader = document.getElementById('initial-loader');
+        if (loader && !document.getElementById('almex-error-note')) {
+          var note = document.createElement('div');
+          note.id = 'almex-error-note';
+          note.style.cssText = 'margin-top: 24px; max-width: 440px; font-size: 12px; color: #e6c89a; line-height: 1.6; border: 1px solid #4a3e31; padding: 16px; background: #161412; border-radius: 4px;';
+          note.innerHTML = '<strong style="color: #c89d5c; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.15em;">Showroom Notice</strong>If the showroom does not appear within seconds, please hard refresh (<kbd style="background:#26221d;padding:2px 6px;border-radius:3px;">Ctrl+F5</kbd> or <kbd style="background:#26221d;padding:2px 6px;border-radius:3px;">Cmd+Shift+R</kbd>) to clear old browser cache, or ensure GitHub Pages is configured to deploy from the <code>/docs</code> folder.';
+          loader.appendChild(note);
+        }
+      });
     </script>
   </head>
   <body class="bg-[#0c0b0a] text-[#eae7e1] antialiased selection:bg-[#c89d5c] selection:text-black">
