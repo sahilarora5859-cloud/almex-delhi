@@ -1,35 +1,28 @@
 {
-  "config": {
-    "introBackgroundUrl": "./assets/almex_exact_facade_kirti_nagar_1790331316270-8RNo0gle.jpg",
-    "heroBackgroundUrl": "./assets/almex_hero_suite_1790330628827-zTUrx6u5.jpg",
-    "showroomBackgroundUrl": "./assets/almex_exact_facade_kirti_nagar_1790331316270-8RNo0gle.jpg",
-    "chairsCoverUrl": "./assets/almex_cognac_executive_chair_1790331615043-C6HCnuWt.jpg",
-    "desksCoverUrl": "./assets/almex_desks_collection_1790330673247-grOyTOpj.jpg"
-  },
   "items": [
     {
       "id": "chair-01",
       "name": "ALMEX COGNAC EXECUTIVE",
-      "subtitle": "High-Back Executive Chair",
       "category": "office-chairs",
       "categoryLabel": "Executive Office Seating",
       "shortDescription": "A premium high-back chair featuring soft cushioned seating, warm cognac upholstery and elegant chrome detailing. Designed for a sophisticated and comfortable executive workspace.",
-      "imageUrl": "./assets/almex_cognac_executive_chair_1790331615043-C6HCnuWt.jpg",
+      "imageUrl": "./images/chair-chair-01-1790625580202.png",
       "dimensions": "W: 68 cm · D: 72 cm · H: 118–128 cm",
       "finish": "Cognac Upholstery · Chrome Accents · Contrast Stitching",
       "layout": "featured-full",
-      "isHeroSpotlight": true
+      "isHeroSpotlight": true,
+      "subtitle": "High-Back Executive Chair"
     },
     {
       "id": "chair-03",
       "name": "ALMEX SOLIS",
-      "subtitle": "Low-Back Conference Chair",
       "category": "office-chairs",
       "categoryLabel": "Conference / Office Chair",
       "shortDescription": "A sophisticated cushioned chair featuring a warm tan finish, button-tufted detailing and polished chrome accents. Its refined design makes it ideal for modern conference rooms and executive workspaces.",
-      "imageUrl": "https://images.unsplash.com/photo-1505797149-43b0069ec26b?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-chair-03-1790625580248.jpg",
       "finish": "Warm Tan Upholstery · Button-Tufted Detailing · Polished Chrome",
-      "layout": "split-duo"
+      "layout": "split-duo",
+      "subtitle": "Low-Back Conference Chair"
     },
     {
       "id": "chair-04",
@@ -37,7 +30,7 @@
       "category": "office-chairs",
       "categoryLabel": "Office Chair",
       "shortDescription": "Sculpted silhouette with contoured cushioning for executive corner offices.",
-      "imageUrl": "https://images.unsplash.com/photo-1589384267710-7a25bc2f211e?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-chair-04-1790625580249.jpg",
       "dimensions": "W: 64 cm · D: 66 cm · H: 108–116 cm",
       "finish": "Caramel Tan Leatherette with Black Powder-Coated Pedestal",
       "layout": "asymmetric-left"
@@ -48,7 +41,7 @@
       "category": "office-chairs",
       "categoryLabel": "Office Chair",
       "shortDescription": "Multi-axis adjustable armrests with synchronous tilt mechanism for modern workstations.",
-      "imageUrl": "https://images.unsplash.com/photo-1596162954151-cdcb4c0f70a8?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-chair-05-1790625580249.jpg",
       "dimensions": "W: 67 cm · D: 64 cm · H: 110–120 cm",
       "finish": "Graphite Mesh with Reinforced Nylon Core",
       "layout": "asymmetric-right"
@@ -59,7 +52,7 @@
       "category": "office-chairs",
       "categoryLabel": "Office Chair",
       "shortDescription": "Horizontal channeled cushioning with refined chrome structural arms.",
-      "imageUrl": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-chair-06-1790625580250.jpg",
       "dimensions": "W: 62 cm · D: 65 cm · H: 114–122 cm",
       "finish": "Rich Espresso Leatherette & High-Gloss Chrome Trim",
       "layout": "vertical-editorial"
@@ -70,7 +63,7 @@
       "category": "office-chairs",
       "categoryLabel": "Office Chair",
       "shortDescription": "Featherlight aesthetic with high-durability elastomeric weave for open-plan offices.",
-      "imageUrl": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-chair-07-1790625580251.jpg",
       "dimensions": "W: 61 cm · D: 59 cm · H: 98–108 cm",
       "finish": "Chalk White Frame with Platinum Grey Mesh",
       "layout": "standard-pair"
@@ -81,7 +74,7 @@
       "category": "office-chairs",
       "categoryLabel": "Office Chair",
       "shortDescription": "Deep padded headrest and multi-point lumbar support for primary executive suites.",
-      "imageUrl": "https://images.unsplash.com/photo-1580481077195-c9a915b497b7?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-chair-09-1790625580252.jpg",
       "dimensions": "W: 72 cm · D: 75 cm · H: 125–135 cm",
       "finish": "Midnight Onyx Leatherette with Solid Metallic Accents",
       "layout": "featured-full"
@@ -92,7 +85,7 @@
       "category": "office-desks",
       "categoryLabel": "Office Desk",
       "shortDescription": "Monumental architectural proportions with integrated modesty panel and concealed cable raceways.",
-      "imageUrl": "./assets/almex_desks_collection_1790330673247-grOyTOpj.jpg",
+      "imageUrl": "./images/chair-desk-01-1790625580253.jpg",
       "dimensions": "W: 240 cm · D: 105 cm · H: 76 cm",
       "finish": "Deep Smoked Oak Veneer with Brushed Bronze Inlay",
       "layout": "featured-full",
@@ -104,7 +97,7 @@
       "category": "office-desks",
       "categoryLabel": "Office Desk",
       "shortDescription": "Expansive dual-surface configuration designed for commanding corner spaces.",
-      "imageUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-desk-03-1790625580254.jpg",
       "dimensions": "W: 220 cm × 180 cm · H: 75 cm",
       "finish": "Warm Natural Ash Top with Architectural Steel Base",
       "layout": "split-duo"
@@ -115,7 +108,7 @@
       "category": "office-desks",
       "categoryLabel": "Office Desk",
       "shortDescription": "Unencumbered surface with chamfered edge details for creative design studios.",
-      "imageUrl": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-desk-04-1790625580254.jpg",
       "dimensions": "W: 160 cm · D: 80 cm · H: 75 cm",
       "finish": "Matte Hard-Waxed Nordic Birch with Powder-Coated White Trestles",
       "layout": "asymmetric-left"
@@ -126,7 +119,7 @@
       "category": "office-desks",
       "categoryLabel": "Office Desk",
       "shortDescription": "Sublime reconstituted Nero Marquina top with recessed leather writing blotter.",
-      "imageUrl": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-desk-05-1790625580255.jpg",
       "dimensions": "W: 210 cm · D: 95 cm · H: 76 cm",
       "finish": "Nero Marquina Matte Composite & Champagne Gold Feet",
       "layout": "asymmetric-right"
@@ -137,7 +130,7 @@
       "category": "office-desks",
       "categoryLabel": "Office Desk",
       "shortDescription": "Classic executive massing refined with contemporary shadow gaps and soft-close storage.",
-      "imageUrl": "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-desk-06-1790625580256.jpg",
       "dimensions": "W: 220 cm · D: 100 cm · H: 76 cm",
       "finish": "Rift-Cut Ebony Oak with Brushed Gunmetal Hardware",
       "layout": "vertical-editorial"
@@ -148,7 +141,7 @@
       "category": "office-desks",
       "categoryLabel": "Office Desk",
       "shortDescription": "Open-frame architecture allowing natural light passage across modern workspace floors.",
-      "imageUrl": "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "./images/chair-desk-07-1790625580256.jpg",
       "dimensions": "W: 180 cm · D: 85 cm · H: 75 cm",
       "finish": "Warm Hazelnut Laminate with Sandblasted Aluminum Legs",
       "layout": "standard-pair"
@@ -159,10 +152,18 @@
       "category": "office-desks",
       "categoryLabel": "Office Desk",
       "shortDescription": "Curated for primary executive retreats and signature corporate presentations.",
-      "imageUrl": "./assets/almex_hero_suite_1790330628827-zTUrx6u5.jpg",
+      "imageUrl": "./images/chair-desk-09-1790625580257.jpg",
       "dimensions": "W: 260 cm · D: 110 cm · H: 76 cm",
       "finish": "Dark Walnut Burl with Solid Milled Brass Plinth",
       "layout": "featured-full"
     }
-  ]
+  ],
+  "config": {
+    "introBackgroundUrl": "./images/bg-introBackgroundUrl-1790625580257.jpg",
+    "heroBackgroundUrl": "",
+    "showroomBackgroundUrl": "./images/bg-showroomBackgroundUrl-1790625580257.jpg",
+    "chairsCoverUrl": "",
+    "desksCoverUrl": ""
+  },
+  "updatedAt": "2026-09-28T19:59:40.258Z"
 }

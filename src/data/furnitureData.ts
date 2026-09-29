@@ -88,7 +88,15 @@ export function loadSavedConfig(): ShowroomConfig {
       const parsed = JSON.parse(raw);
       const cleaned = { ...DEFAULT_CONFIG };
       for (const k of Object.keys(DEFAULT_CONFIG) as (keyof ShowroomConfig)[]) {
-        if (parsed[k] && typeof parsed[k] === 'string' && !parsed[k].startsWith('/src/') && !parsed[k].includes('179033')) {
+        if (
+          parsed[k] &&
+          typeof parsed[k] === 'string' &&
+          !parsed[k].startsWith('/src/') &&
+          !parsed[k].includes('179033') &&
+          !parsed[k].includes('C6HCnuWt') &&
+          !parsed[k].includes('zTUrx6u5') &&
+          !parsed[k].includes('grOyTOpj')
+        ) {
           cleaned[k] = parsed[k];
         }
       }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Clock, Phone, Navigation } from 'lucide-react';
+import { MapPin, Clock, Navigation } from 'lucide-react';
 
 interface ShowroomSectionProps {
   showroomImageUrl: string;
@@ -53,7 +53,7 @@ export const ShowroomSection: React.FC<ShowroomSectionProps> = ({
         </div>
 
         {/* Location & Visiting Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-[#221f1b]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-[#221f1b]">
           {/* Location */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#c89d5c]">
@@ -85,17 +85,6 @@ export const ShowroomSection: React.FC<ShowroomSectionProps> = ({
             </p>
             <p className="text-xs text-[#80776b]">
               Corporate consultations available by advance reservation.
-            </p>
-          </div>
-
-          {/* Direct Contact */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#c89d5c]">
-              <Phone className="w-3.5 h-3.5" />
-              <span>Showroom Desk</span>
-            </div>
-            <p className="text-xs text-[#80776b]">
-              Email: info@almexfurniture.com
             </p>
           </div>
         </div>

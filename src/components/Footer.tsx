@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { PrimaryCategory } from '../types/furniture';
 
 interface FooterProps {
@@ -71,14 +71,6 @@ export const Footer: React.FC<FooterProps> = ({
                   02 · Office Desks
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={onOpenAssetManager}
-                  className="hover:text-[#c89d5c] transition-colors text-[11px] text-[#736c61]"
-                >
-                  Showroom Curator (Manage Photos)
-                </button>
-              </li>
             </ul>
           </div>
 
@@ -89,9 +81,6 @@ export const Footer: React.FC<FooterProps> = ({
             </span>
             <p className="text-xs text-[#8c8476] leading-relaxed">
               Main Furniture Block, Kirti Nagar, New Delhi 110015, India
-            </p>
-            <p className="text-xs text-[#8c8476]">
-              Email: info@almexfurniture.com
             </p>
             
             {/* Social Links */}
@@ -109,24 +98,6 @@ export const Footer: React.FC<FooterProps> = ({
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                 </svg>
               </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 border border-[#23201b] hover:border-[#423d34] text-[#a8a092] hover:text-white transition-colors"
-                aria-label="Almex on Facebook"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
-              </a>
-              <button
-                onClick={onOpenInquiry}
-                className="p-2 border border-[#23201b] hover:border-[#423d34] text-[#a8a092] hover:text-white transition-colors"
-                aria-label="Direct Email / Phone"
-              >
-                <Mail className="w-4 h-4" />
-              </button>
             </div>
           </div>
 

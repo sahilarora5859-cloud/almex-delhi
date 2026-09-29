@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SlidersHorizontal, Phone, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { PrimaryCategory } from '../types/furniture';
 
 interface NavbarProps {
@@ -98,28 +98,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Zone 3: Primary Actions */}
         <div className="hidden sm:flex items-center gap-3">
-          {/* Curator / Image Manager Button (allows user to upload their 20-22 photos or change intro) */}
-          <button
-            onClick={onOpenAssetManager}
-            type="button"
-            className="flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-[#b5ada0] hover:text-white border border-[#2b2824] hover:border-[#4d4740] bg-[#141311] transition-colors whitespace-nowrap"
-            title="Upload and manage your original 20–22 furniture photos and intro image"
-          >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#c89d5c]" />
-            <span>Showroom Curator</span>
-          </button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="flex sm:hidden items-center gap-2">
-          <button
-            onClick={onOpenAssetManager}
-            type="button"
-            className="p-2 text-[#c89d5c] border border-[#2b2824] bg-[#141311]"
-            aria-label="Manage images"
-          >
-            <SlidersHorizontal className="w-4 h-4" />
-          </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             type="button"
@@ -185,20 +167,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 About Almex
               </a>
             </div>
-          </div>
-
-          <div className="pt-4 border-t border-[#262420]">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAssetManager();
-              }}
-              type="button"
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 text-xs font-medium text-[#b5ada0] border border-[#2b2824] bg-[#141311]"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#c89d5c]" />
-              <span>Showroom Curator (Manage Photos)</span>
-            </button>
           </div>
         </div>
       )}

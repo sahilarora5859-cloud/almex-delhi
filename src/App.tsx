@@ -84,8 +84,6 @@ export default function App() {
           if (filtered.length !== idbItems.length) {
             handleSaveItems(filtered);
           }
-          // Automatically sync hydrated items to codebase in background
-          handleSyncToPermanentCode(filtered, config);
         }
         const idbConfig = await idbGet<ShowroomConfig>(STORAGE_KEY_CONFIG);
         if (isMounted && idbConfig) {
@@ -105,7 +103,6 @@ export default function App() {
   const handleSaveItems = (newItems: FurnitureItem[]) => {
     setItems(newItems);
     saveFurnitureItems(newItems);
-    handleSyncToPermanentCode(newItems, config);
   };
 
   const handleDeleteItem = (itemId: string) => {
@@ -120,7 +117,6 @@ export default function App() {
   const handleSaveConfig = (newConfig: ShowroomConfig) => {
     setConfig(newConfig);
     saveShowroomConfig(newConfig);
-    handleSyncToPermanentCode(items, newConfig);
   };
 
   const handleSelectCategory = (cat: PrimaryCategory) => {

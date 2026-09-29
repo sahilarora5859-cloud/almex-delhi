@@ -90,15 +90,6 @@ function showroomSyncPlugin(): Plugin {
               'Connection': 'close',
             });
             res.end(JSON.stringify({ success: true, count: processedItems.length }));
-
-            // Trigger production build & git commit in background
-            exec(
-              'npm run build && git add . && git commit -m "Auto-sync finalized user chair images and design to codebase"',
-              (err) => {
-                if (err) console.error('[Showroom Sync] Build error:', err);
-                else console.log('[Showroom Sync] Build and git commit succeeded!');
-              }
-            );
           } catch (err: any) {
             console.error('[Showroom Sync] Error processing sync:', err);
             res.writeHead(500, { 'Content-Type': 'application/json' });
